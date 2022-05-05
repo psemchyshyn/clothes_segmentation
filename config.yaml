@@ -1,0 +1,5 @@
+data:
+  batch_size: 32
+  image_size: 128
+  train_path: "E:\\Users\\msemc\\Documents\\Pavlo\\DATA\\imaterialist-fashion-2019-FGVC6"
+  ignore_val: 250
