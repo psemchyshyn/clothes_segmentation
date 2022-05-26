@@ -1,5 +1,0 @@
-batch_size: 32
-channels: 3
-ignore_val: 250
-lr: 0.001
-num_classes: 46

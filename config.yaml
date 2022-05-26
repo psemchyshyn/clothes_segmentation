@@ -1,5 +1,15 @@
 data:
-  batch_size: 32
-  image_size: 128
+  batch_size: 16
+  image_size: 512
   train_path: "E:\\Users\\msemc\\Documents\\Pavlo\\DATA\\imaterialist-fashion-2019-FGVC6"
-  ignore_val: 250
+  num_classes: 1
+  class_size: 250
+  channels: 3
+
+model:
+  model_name: "Unet"
+  encoder_name: "resnet18"
+  pretrained_encoder: True
+  lr: 0.001
+  save_weights_dir: "checkpoints_seg_1class_no_aug/"
+  save_logs_dir: "logs_seg_unet_1class_no_aug/"

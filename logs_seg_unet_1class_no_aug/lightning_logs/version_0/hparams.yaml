@@ -1,0 +1,7 @@
+batch_size: 32
+channels: 3
+encoder_name: resnet18
+lr: 0.001
+model_name: Unet
+num_classes: 1
+pretrained_encoder: true

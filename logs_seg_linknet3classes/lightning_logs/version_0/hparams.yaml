@@ -1,0 +1,7 @@
+batch_size: 32
+channels: 3
+encoder_name: resnet18
+lr: 0.001
+model_name: Linknet
+num_classes: 3
+pretrained_encoder: true

@@ -1,4 +1,0 @@
-batch_size: 32
-channels: 3
-lr: 0.001
-num_classes: 46

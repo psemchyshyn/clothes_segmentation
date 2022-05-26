@@ -5,7 +5,7 @@ import albumentations as A
 
 
 class DataModule(LightningDataModule):
-    def __init__(self, path, image_size, batch_size):
+    def __init__(self, conf_data):
         super(DataModule, self).__init__()
         self.transforms = A.Compose([
             A.HorizontalFlip(),
@@ -19,18 +19,16 @@ class DataModule(LightningDataModule):
                 A.MedianBlur(),
             ], p=0.5)
         ])
-        self.batch_size = batch_size
-        self.image_size = image_size
-        # self.ignore_val = ignore_val
+        self.transforms = None
+        self.path = conf_data["train_path"]
+        self.image_size = conf_data["image_size"]
+        self.batch_size = conf_data["batch_size"]
+        self.num_classes = conf_data["num_classes"]
+        self.class_size = conf_data["class_size"]
 
-        ds = DatasetSeg(path, self.image_size, transforms=self.transforms)
+        ds = DatasetSeg(self.path, self.image_size, self.num_classes, self.class_size, transforms=self.transforms)
         train_size = int(len(ds)*0.8)
         self.train_ds, self.val_ds = random_split(ds, [train_size, len(ds) - train_size])
-
-        self.channels = ds[0][0].shape[0]
-        self.num_classes = ds.num_classes
-
-        self.dims = (self.channels, self.num_classes, self.batch_size)
 
     def train_dataloader(self) -> DataLoader:
         return DataLoader(self.train_ds, pin_memory=True, shuffle=True, batch_size=self.batch_size)

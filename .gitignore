@@ -1,3 +1,7 @@
-/checkpoints
+/checkpoints*
+/examples
+/inference
 /.idea
 /__pycache__
+/report.docx
+/~$report.docx
